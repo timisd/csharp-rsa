@@ -3,8 +3,14 @@ using RSA.Logic;
 
 namespace RSA.UI;
 
+/// <summary>
+/// Statische Klasse zur Anzeige des Entschlüsselungsdialogs.
+/// </summary>
 public static class DecryptDialog
 {
+    /// <summary>
+    /// Zeigt den Entschlüsselungsdialog an und verarbeitet die Benutzereingaben.
+    /// </summary>
     public static void Display()
     {
         const string title = """
@@ -27,6 +33,7 @@ public static class DecryptDialog
         var message = Console.ReadLine();
         var bytes = Convert.FromBase64String(message!);
 
+        // Entschlüsselt die Nachricht mit den angegebenen Werten
         var encrypted = Encryption.Decrypt(bytes, d, n);
         Console.Clear();
         Console.WriteLine(title);

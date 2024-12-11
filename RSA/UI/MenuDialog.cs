@@ -1,7 +1,13 @@
 ﻿namespace RSA.UI;
 
+/// <summary>
+/// Statische Klasse zur Anzeige des Hauptmenüs der RSA-Anwendung.
+/// </summary>
 public static class MenuDialog
 {
+    /// <summary>
+    /// Zeigt das Hauptmenü an und verarbeitet die Benutzereingaben.
+    /// </summary>
     public static void Display()
     {
         const string title = """

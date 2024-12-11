@@ -3,8 +3,17 @@ using System.Security.Cryptography;
 
 namespace RSA.Logic;
 
+/// <summary>
+/// Hilfsklasse für Operationen mit großen Ganzzahlen.
+/// </summary>
 public static class BigIntHelper
 {
+    /// <summary>
+    /// Überprüft, ob eine Zahl wahrscheinlich eine Primzahl ist.
+    /// </summary>
+    /// <param name="number">Die zu überprüfende Zahl.</param>
+    /// <param name="certainty">Die Anzahl der Iterationen für den Miller-Rabin-Test (Standardwert: 10).</param>
+    /// <returns>True, wenn die Zahl wahrscheinlich eine Primzahl ist, andernfalls false.</returns>
     public static bool IsProbablePrime(this BigInteger number, int certainty = 10)
     {
         if (number < 2) return false;
@@ -39,6 +48,12 @@ public static class BigIntHelper
         return true;
     }
 
+    /// <summary>
+    /// Berechnet den größten gemeinsamen Teiler (ggT) von zwei Zahlen.
+    /// </summary>
+    /// <param name="a">Die erste Zahl.</param>
+    /// <param name="b">Die zweite Zahl.</param>
+    /// <returns>Der größte gemeinsame Teiler von a und b.</returns>
     public static BigInteger Gcd(BigInteger a, BigInteger b)
     {
         while (b != 0)
@@ -51,6 +66,12 @@ public static class BigIntHelper
         return a;
     }
 
+    /// <summary>
+    /// Berechnet das multiplikative Inverse von a modulo m.
+    /// </summary>
+    /// <param name="a">Die Zahl, deren Inverses berechnet werden soll.</param>
+    /// <param name="m">Der Modulus.</param>
+    /// <returns>Das multiplikative Inverse von a modulo m.</returns>
     public static BigInteger ModInverse(BigInteger a, BigInteger m)
     {
         var m0 = m;
@@ -77,6 +98,12 @@ public static class BigIntHelper
         return x;
     }
 
+    /// <summary>
+    /// Generiert eine große Primzahl mit der angegebenen Bitlänge.
+    /// </summary>
+    /// <param name="bitLength">Die Bitlänge der zu generierenden Primzahl.</param>
+    /// <param name="rng">Der Zufallszahlengenerator.</param>
+    /// <returns>Eine große Primzahl.</returns>
     public static BigInteger GenerateLargePrime(int bitLength, RandomNumberGenerator rng)
     {
         BigInteger number;
@@ -89,6 +116,12 @@ public static class BigIntHelper
         return number;
     }
 
+    /// <summary>
+    /// Generiert eine zufällige große Ganzzahl mit der angegebenen Bitlänge.
+    /// </summary>
+    /// <param name="bitLength">Die Bitlänge der zu generierenden Zahl.</param>
+    /// <param name="rng">Der Zufallszahlengenerator.</param>
+    /// <returns>Eine zufällige große Ganzzahl.</returns>
     public static BigInteger GenerateRandomBigInteger(int bitLength, RandomNumberGenerator rng)
     {
         var bytes = new byte[bitLength / 8];
