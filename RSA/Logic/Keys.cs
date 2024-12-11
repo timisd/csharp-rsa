@@ -62,7 +62,7 @@ public class Keys
         CalculateN();
         CalculatePhi();
         GenerateE(BitLength, rng);
-        GenerateD();
+        CalculateD();
 
         return _instance;
     }
@@ -85,7 +85,7 @@ public class Keys
 
         CalculateN();
         CalculatePhi();
-        GenerateD();
+        CalculateD();
 
         return _instance;
     }
@@ -130,7 +130,7 @@ public class Keys
     /// <summary>
     /// Berechnet den privaten Exponenten D als das multiplikative Inverse von E modulo Phi.
     /// </summary>
-    private static void GenerateD()
+    private static void CalculateD()
     {
         _instance.D = BigIntHelper.ModInverse(_instance.E, _instance.Phi);
     }
