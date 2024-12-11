@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using RSA.UI;
 
-Console.WriteLine("Hello, World!");
+MenuDialog.Display();
+
+Console.ReadLine();
